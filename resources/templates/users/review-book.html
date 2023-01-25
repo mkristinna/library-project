@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Oceni knjigu </title>
+</head>
+
+<body>
+
+<div class="container">
+    <hr>
+    <p class="h4 mb-4"> Oceni knjigu </p>
+    <!--
+    <form th:object="${knjiga}">
+        <fieldset disabled>
+            <div class="form-group">
+                <label>Knjiga</label>
+                <input type="text" th:field="*{knjiga.naziv}" class="form-control" placeholder="Naziv">
+            </div>
+            <div class="form-group">
+                <label>Autor</label>
+                <input type="text" th:field="*{knjiga.autor}" class="form-control" placeholder="Autor">
+            </div>
+        </fieldset>
+    </form>
+-->
+    <form action="#" th:action="@{/user/addReview}"
+          th:object="${recenzija}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <input type="hidden" th:field="*{knjiga.id}">
+        <input type="hidden" th:field="*{knjiga.isbn}">
+        <input type="hidden" th:field="*{knjiga.godinaIzdanja}">
+        <input type="hidden" th:field="*{clan.id}">
+        <input type="hidden" th:field="*{clan.ime}">
+        <input type="hidden" th:field="*{clan.prezime}">
+        <input type="hidden" th:field="*{clan.aktivan}">
+        <input type="hidden" th:field="*{clan.username}">
+
+        <div class="form-group">
+            <label>Knjiga</label>
+            <input type="text" th:field="*{knjiga.naziv}" class="form-control" placeholder="Naziv">
+        </div>
+        <div class="form-group">
+            <label>Autor</label>
+            <input type="text" th:field="*{knjiga.autor}" class="form-control" placeholder="Autor">
+        </div>
+
+        <label>Ocena:</label>
+        <div class="form-check mb-4">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="1" id="1" value="1" th:field="*{ocena}">
+                <label class="form-check-label" for="1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="2" id="2" value="2" th:field="*{ocena}">
+                <label class="form-check-label" for="2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="3" id="3" value="3" th:field="*{ocena}">
+                <label class="form-check-label" for="3">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="4" id="4" value="4" th:field="*{ocena}">
+                <label class="form-check-label" for="4">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="5" id="5" value="5" th:field="*{ocena}">
+                <label class="form-check-label" for="5">5</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="komentar">Komentar</label>
+            <textarea class="form-control" th:field="*{komentar}" id="komentar" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info col-2">Posalji</button>
+
+    </form>
+    <hr>
+    <!--
+    <a th:href="@{/employees/list}">
+        Home
+    </a>
+    -->
+</div>
+
+</body>
+
+</html>

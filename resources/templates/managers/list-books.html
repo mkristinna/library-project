@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Knjige </title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ml-5 mt-5 mr-5 mb-5" style="background-color: #EFDCFE;">
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link col-4" th:href="@{/admin/homepage}"> Pocetna </a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/showFormForAddBook/}">Dodaj knjigu</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/showFormForAdd/}">Dodaj clana</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/books/}">Knjige</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/users/}">Clanovi</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/usersbooks/}">Uzete knjige</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/requests/}"> Zahtevi </a>
+            <a class="nav-item nav-link col-1" style="position:fixed; right:1px;" th:href="@{/logout}">Odjavi se</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <hr>
+    <table class="table table-hover" style="table-layout: fixed ; width: 100%; background-color: transparent">
+        <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor</th>
+            <th>Godina izdanja</th>
+            <th>ISBN</th>
+            <th> </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="knjiga : ${knjige}">
+
+            <td th:text="${knjiga.naziv}" />
+            <td th:text="${knjiga.autor}" />
+            <td th:text="${knjiga.godinaIzdanja}" />
+            <td th:text="${knjiga.isbn}" />
+            <td>
+                <a th:href="@{/admin/reviews(idKnjige=${knjiga.id})}" class="btn btn-info btn-sm">
+                    Recenzije
+                </a>
+                <a th:href="@{/admin/showFormForBookUpdate(idKnjige=${knjiga.id})}" class="btn btn-info btn-sm">
+                    Izmeni
+                </a>
+                <a th:href="@{/admin/deleteBook(idKnjige=${knjiga.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Da li ste sigurni da zelite da obrisete knjigu?'))) return false">
+                    Obrisi
+                </a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
+
+

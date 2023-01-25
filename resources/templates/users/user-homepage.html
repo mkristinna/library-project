@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Home </title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light ml-5 mt-5 mr-5 mb-5" style="background-color: #EFDCFE;">
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link col-6" th:href="@{/user/homepage}"> Home</a>
+            <a class="nav-item nav-link col-6" th:href="@{/user/borrowedBooks}">Uzete knjige</a>
+            <a class="nav-item nav-link col-6" th:href="@{/user/readBooks}">Procitane knjige</a>
+            <a class="nav-item nav-link col-6" th:href="@{/user/books}">Lista knjiga</a>
+            <a class="nav-item nav-link col-3 ml-5 pr-1" th:href="@{/logout}">Odjavi se</a>
+        </div>
+    </div>
+</nav>
+
+</body>
+
+</html>

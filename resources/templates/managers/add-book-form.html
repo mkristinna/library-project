@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Dodaj knjigu </title>
+</head>
+
+<body style="background-color: aliceblue;">
+
+<div class="container" align="center">
+    <hr>
+    <p class="h4 mb-4"> Dodaj </p>
+    <form action="#" th:action="@{/admin/addBook}"
+          th:object="${knjiga}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <input type="text" th:field="*{naziv}" class="form-control mb-4 col-6" placeholder="Naziv">
+        <input type="text" th:field="*{autor}" class="form-control mb-4 col-6" placeholder="Autor">
+        <input type="number" th:field="*{godinaIzdanja}" class="form-control mb-4 col-6" placeholder="Godina izdanja">
+        <input type="number" th:field="*{isbn}" class="form-control mb-4 col-6" placeholder="ISBN">
+
+        <button type="submit" class="btn btn-info col-3" style="background-color: #EFDCFE">Sacuvaj</button>
+
+    </form>
+    <hr>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title> Login </title>
+</head>
+
+<body>
+    <div class="container mt-5 ml-5">
+        <p class="h3"> Prijavi se u Biblioteku </p>
+
+        <form th:action="@{/login}" method="post">
+
+            <div th:if="${param.error}">
+                <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+            </div>
+            <div th:if="${param.logout}">
+                <p class="text-warning">You have been logged out.</p>
+            </div>
+
+            <input type="text" name="username" class="form-control mb-2 col-3" placeholder="Username">
+            <input type="password" name="password" class="form-control mb-2 col-3" placeholder="Password">
+            <button type="submit" class="btn btn-info col-2">Prijavi se</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Knjige </title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ml-5 mt-5 mr-5 mb-5" style="background-color: #EFDCFE;">
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link col-6" th:href="@{/user/homepage}"> Home</a>
+                <a class="nav-item nav-link col-6" th:href="@{/user/borrowedBooks}">Uzete knjige</a>
+                <a class="nav-item nav-link col-6" th:href="@{/user/readBooks}">Procitane knjige</a>
+                <a class="nav-item nav-link col-6" th:href="@{/user/books}">Lista knjiga</a>
+                <a class="nav-item nav-link col-1" style="position:fixed; right:1px;" th:href="@{/logout}">Odjavi se</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <hr>
+
+    <table class="table table-hover" style="table-layout: fixed ; width: 100%;">
+        <thead class="thead-dark">
+        <tr>
+            <th>Naziv</th>
+            <th>Autor</th>
+            <th>Godina izdanja</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="knjiga : ${knjige}">
+
+            <td th:text="${knjiga.naziv}" />
+            <td th:text="${knjiga.autor}" />
+            <td th:text="${knjiga.godinaIzdanja}" />
+            <td>
+                <a th:href="@{/user/borrowbook(idKnjige=${knjiga.id})}" class="btn btn-info btn-sm"
+                th:if="${not knjiga.uzeta}">
+                    Uzmi knjigu
+                </a>
+                <a th:href="@{/user/reviews(idKnjige=${knjiga.id})}" class="btn btn-info btn-sm">
+                    Recenzije
+                </a>
+                <!--
+                <a th:href="@{/admin/deleteBook(idKnjige=${knjiga.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Da li ste sigurni da zelite da obrisete knjigu?'))) return false">
+                    Obrisi
+                </a>
+                -->
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
+
+

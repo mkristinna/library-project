@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/images/pexels-emily-768125.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <title> Izmeni clana </title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ml-5 mt-5 mr-5 mb-5" style="background-color: #EFDCFE;">
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link col-4" th:href="@{/admin/homepage}"> Pocetna </a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/showFormForAddBook/}">Dodaj knjigu</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/showFormForAdd/}">Dodaj clana</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/books/}">Knjige</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/users/}">Clanovi</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/usersbooks/}">Uzete knjige</a>
+            <a class="nav-item nav-link col-4" th:href="@{/admin/requests/}"> Zahtevi </a>
+            <a class="nav-item nav-link col-1" style="position:fixed; right:1px;" th:href="@{/logout}">Odjavi se</a>
+        </div>
+
+    </div>
+</nav>
+<div class="container">
+    <hr>
+    <p class="h4 mb-4"> Izmeni </p>
+    <form action="#" th:action="@{/admin/update}"
+          th:object="${clan}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <input type="text" th:field="*{ime}" class="form-control mb-4 col-4" placeholder="Ime">
+        <input type="text" th:field="*{prezime}" class="form-control mb-4 col-4" placeholder="Prezime">
+        <input type="text" th:field="*{username}" class="form-control mb-4 col-4" placeholder="Username">
+        <input type="hidden" th:field="*{lozinka}" class="form-control mb-4 col-4" placeholder="Password">
+        <label>Izaberi kategoriju:</label>
+        <select th:field="*{kategorija}" class="form-control mb-4 col-4">
+            <option th:value="'USER'" th:text="USER">Clan</option>
+            <option th:value="'MANAGER'" th:text="MANAGER">Bibliotekar</option>
+        </select>
+        <label>Aktivan:</label>
+        <div class="form-check mb-4">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="da" id="da" value="DA" th:field="*{aktivan}" th:checked>
+                <label class="form-check-label" for="da">DA</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ne" id="ne" value="NE" th:field="*{aktivan}">
+                <label class="form-check-label" for="ne">NE</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info col-2">Sacuvaj</button>
+
+    </form>
+    <hr>
+
+</div>
+
+</body>
+
+</html>
