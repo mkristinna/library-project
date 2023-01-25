@@ -29,7 +29,7 @@ public class AdminController {
     private ReviewService reviewService;
 
     @Bean
-    ReviewService reviewService(){
+    private ReviewService reviewService(){
         return new ReviewServiceImpl();
     }
 
